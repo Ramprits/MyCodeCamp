@@ -3,17 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using MyCodeCamp.Data;
 
 namespace MyCodeCamp.Controllers
 {
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
+        private readonly ICampRepository _repo;
+
+        public ValuesController(ICampRepository repo)
+        {
+            _repo = repo;
+        }
         // GET api/values
-        [HttpGet]
+        [HttpGet("")]
         public IActionResult Get()
         {
-            return Ok(new { FistName = "value1", LastName = "value2" });
+            return Ok(_repo.GetAllCamps());
         }
 
         // GET api/values/5
