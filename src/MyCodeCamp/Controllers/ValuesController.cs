@@ -11,9 +11,9 @@ namespace MyCodeCamp.Controllers
     {
         // GET api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            return Ok(new { FistName = "value1", LastName = "value2" });
         }
 
         // GET api/values/5
